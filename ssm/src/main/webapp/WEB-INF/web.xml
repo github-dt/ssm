@@ -3,22 +3,31 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-    <display-name>web-ssm</display-name>
+    <!--<display-name>web-ssm</display-name>-->
 
+
+    <!-- 加载spring配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-mybatis.xml</param-value>
+        <param-value>classpath:spring/applicationContext-*.xml</param-value>
     </context-param>
 
-    <context-param>
-        <param-name>log4jConfigLocation</param-name>
-        <param-value>classpath:log4j.properties</param-value>
-    </context-param>
-
-    <!-- 编码过滤器 -->
+    <!-- 配置spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+        
+    <!--自定义监听器-->
+    <listener>
+        <listener-class>com.dt.ssm.listener.UrlListener</listener-class>
+    </listener>
+    
+    <!-- 配置字符集编码过滤器 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+
+        <!-- 指定使用的字符集编码 -->
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -26,35 +35,35 @@
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
+        <!-- 配置所有请求都经过字符集编码过滤器处理 -->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- spring监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- 防止spring内存溢出监听器，比如quartz -->
-    <listener>
-        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
-
-
-    <!-- spring mvc servlet-->
+    <!-- 配置springmvc前端控制器 -->
     <servlet>
-        <servlet-name>SpringMVC</servlet-name>
+        <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!-- 加载springmvc的主配置文件 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:applicatation-mvc.xml</param-value>
+            <param-value>classpath:spring/springmvc.xml</param-value>
         </init-param>
+
+        <!-- 配置tomcat启动的时候就加载前端控制器 -->
         <load-on-startup>1</load-on-startup>
-        <async-supported>true</async-supported>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>SpringMVC</servlet-name>
-        <!-- 此处也可以配置成 *.do 形式 -->
-        <url-pattern>/</url-pattern>
+        <servlet-name>springmvc</servlet-name>
+        <!-- 配置请求的url规则，说明：
+            1.*.do，表示以.do结尾的请求进入前端控制器
+            2./，表示所有请求都进入前端控制器
+         -->
+        <!-- <url-pattern>*.do</url-pattern> -->
+
+        <!-- 配置所有请求都进入前端控制器，支持restful -->
+        <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
@@ -62,7 +71,7 @@
     </welcome-file-list>
 
     <!-- session配置 -->
-    <session-config>
-        <session-timeout>15</session-timeout>
-    </session-config>
+    <!--<session-config>-->
+        <!--<session-timeout>15</session-timeout>-->
+    <!--</session-config>-->
 </web-app>

@@ -10,14 +10,13 @@
 <head>
     <title>首页</title>
 
-    <link rel="stylesheet" href="/layui/css/layui.css">
-    <%--<link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1565940880988" media="all">--%>
+    <link rel="stylesheet" href="${contextPath}/layui/css/layui.css">
 </head>
-<script src="/layui/layui.js"></script>
-<%--<script src="//res.layui.com/layui/dist/layui.js?t=1565940880988"></script>--%>
 
+<script src="${contextPath}/layui/layui.js"></script>
 
 <body class="layui-layout-body">
+
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">layui 后台布局</div>
