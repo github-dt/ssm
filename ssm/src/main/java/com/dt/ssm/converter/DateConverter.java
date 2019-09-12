@@ -1,11 +1,3 @@
-/**   
-* @Title: DateConverter.java 
-* @Package cn.itheima.ssm.converter 
-* @Description: TODO(用一句话描述该文件做什么) 
-* @author 传智 小杨老师 
-* @date 2018-6-27 下午12:57:29 
-* @version V1.0   
-*/
 package com.dt.ssm.converter;
 
 import org.springframework.core.convert.converter.Converter;

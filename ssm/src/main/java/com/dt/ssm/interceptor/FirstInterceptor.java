@@ -1,11 +1,3 @@
-/**   
-* @Title: FirstInterceptor.java 
-* @Package cn.itheima.ssm.interceptor 
-* @Description: TODO(用一句话描述该文件做什么) 
-* @author 传智 小杨老师 
-* @date 2018-6-28 下午2:38:13 
-* @version V1.0   
-*/
 package com.dt.ssm.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
