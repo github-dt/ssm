@@ -79,7 +79,9 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <%--<div style="padding: 15px;">内容主体区域</div>--%>
-        <table class="layui-hide" id="demo" lay-filter="test"></table>
+        <table class="layui-hide" id="demo" lay-filter="test">
+
+        </table>
 
     </div>
 
@@ -101,29 +103,22 @@
             ,slider = layui.slider //滑块
 
         //向世界问个好
-        layer.msg('Hello World');
+        // layer.msg('Hello World');
 
         //执行一个 table 实例
         table.render({
             elem: '#demo'
-            ,height: 420
-            ,url: '/demo/table/user/' //数据接口
-            ,title: '用户表'
+            ,height: 'full-200'
+            ,url: '${contextPath}/scController/findAll.do' //数据接口
+            ,title: '分数表'
             ,page: true //开启分页
             ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-            ,totalRow: true //开启合计行
+            // ,totalRow: true //开启合计行
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '合计：'}
-                ,{field: 'username', title: '用户名', width:80}
-                ,{field: 'experience', title: '积分', width: 90, sort: true, totalRow: true}
-                ,{field: 'sex', title: '性别', width:80, sort: true}
-                ,{field: 'score', title: '评分', width: 80, sort: true, totalRow: true}
-                ,{field: 'city', title: '城市', width:150}
-                ,{field: 'sign', title: '签名', width: 200}
-                ,{field: 'classify', title: '职业', width: 100}
-                ,{field: 'wealth', title: '财富', width: 135, sort: true, totalRow: true}
-                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                ,{field: 'Sname', title: '姓名', width:"33%", sort: true, fixed: 'left'}
+                ,{field: 'Cname', title: '科目', width:"33%"}
+                ,{field: 'score', title: '分数', width: "33%", sort: true, totalRow: true}
             ]]
         });
     });
