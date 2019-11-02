@@ -33,7 +33,7 @@
     <commonscodec.version>1.9</commonscodec.version>
 
     <!-- json支持,jackson包版本 -->
-    <jackson.version>2.7.4</jackson.version>
+    <jackson.version>2.10.0</jackson.version>
   </properties>
 
   <dependencies>
