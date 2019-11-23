@@ -116,7 +116,7 @@
             // ,totalRow: true //开启合计行
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'Sname', title: '姓名', width:"33%", sort: true, fixed: 'left'}
+                ,{field: 'Sname', title: '姓名', width:"33%", fixed: 'left'}
                 ,{field: 'Cname', title: '科目', width:"33%"}
                 ,{field: 'score', title: '分数', width: "33%", sort: true, totalRow: true}
             ]]
